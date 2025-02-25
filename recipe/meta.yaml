@@ -112,5 +112,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - almogsegal
+    - mrogowski
     - conda-forge/cuda
   feedstock-name: libcublasmp
