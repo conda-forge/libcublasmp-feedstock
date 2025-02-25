@@ -30,6 +30,8 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage("libcublasmp", max_pin="x") }}
+      missing_dso_whitelist:
+        - "*libcuda.so*"
     files:
       - lib/libcublasmp.so.*
     requirements:
@@ -44,11 +46,13 @@ outputs:
         - libcublas    # [(cuda_compiler_version or "").startswith("12")]
         - cudatoolkit  # [(cuda_compiler_version or "").startswith("11")]
         - libcal 0.4.3.*
+        - libnvshmem3
       run:
         - {{ pin_compatible("cuda-version", max_pin="x") }}
         - libcublas    # [(cuda_compiler_version or "").startswith("12")]
         - cudatoolkit  # [(cuda_compiler_version or "").startswith("11")]
         - {{ pin_compatible("libcal", exact=True) }}
+        - libnvshmem3
       run_constrained:
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
     test:
