@@ -22,8 +22,13 @@ build:
   skip: true  # [cuda_compiler_version in (None, "None") or (cuda_compiler_version or "").startswith("11")]
   skip: true  # [not (linux64 or aarch64)]
   script:
+    - check-glibc lib/*.so.*
     - cp -rv include $PREFIX
     - cp -rv lib $PREFIX
+
+requirements:
+  build:
+    - cf-nvidia-tools 1   # [linux]
 
 outputs:
   - name: libcublasmp
