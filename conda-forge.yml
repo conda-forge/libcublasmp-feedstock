@@ -9,6 +9,3 @@ provider:
   linux_ppc64le: default
 build_platform:
    linux_aarch64: linux_64
-os_version:
-  linux_64: alma8
-  linux_aarch64: alma8
