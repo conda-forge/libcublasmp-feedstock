@@ -50,7 +50,7 @@ outputs:
         - cuda-version {{ cuda_compiler_version }}
         - libcublas    # [(cuda_compiler_version or "").startswith("12")]
         - cudatoolkit  # [(cuda_compiler_version or "").startswith("11")]
-        - libcal 0.4.3.*
+        - libcal 0.*
         - libnvshmem3
       run:
         - {{ pin_compatible("cuda-version", max_pin="x") }}
