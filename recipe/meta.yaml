@@ -1,4 +1,4 @@
-{% set version = "0.3.1.663" %}
+{% set version = "0.4.0.789" %}
 {% set lib_version = version.split(".")[0]+"."+version.split(".")[1]+"."+version.split(".")[2] %}
 {% set platform = "placeholder" %}  # [not (linux64 or aarch64)]
 {% set platform = "linux-x86_64" %}  # [linux64]
@@ -14,8 +14,8 @@ package:
 
 source:
   url: https://developer.download.nvidia.com/compute/cublasmp/redist/libcublasmp/{{ platform }}/libcublasmp-{{ platform }}-{{ version }}_cuda{{ cuda_major }}-archive.{{ extension }}
-  sha256: edcabc81ea30d10253a739f951b87d88621270646ebb26cc5b967e112db4e5a2  # [linux64 and (cuda_compiler_version or "").startswith("12")]
-  sha256: 23ace8181764b41bae12dd04c8d5bdb4ca9ec25c8b40e73b6216c234f69dc54e  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
+  sha256: dba785a0301d2af320c8a3d9598874f270a02a77a14bfe59e94345669cacb6b6  # [linux64 and (cuda_compiler_version or "").startswith("12")]
+  sha256: 0dbc7e91789ea3428bada7527c0012f6d5ae5c418779bb678365c2f20b2010a5  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
 
 build:
   number: 0
