@@ -18,12 +18,17 @@ source:
   sha256: 56cb0c78b7f748867d48d68c4fa61bbb2de7b424ec5555953de7423113f04469  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [cuda_compiler_version in (None, "None") or (cuda_compiler_version or "").startswith("11")]
   skip: true  # [not (linux64 or aarch64)]
   script:
+    - check-glibc lib/*.so.*
     - cp -rv include $PREFIX
     - cp -rv lib $PREFIX
+
+requirements:
+  build:
+    - cf-nvidia-tools 1   # [linux]
 
 outputs:
   - name: libcublasmp
@@ -45,7 +50,7 @@ outputs:
         - cuda-version {{ cuda_compiler_version }}
         - libcublas    # [(cuda_compiler_version or "").startswith("12")]
         - cudatoolkit  # [(cuda_compiler_version or "").startswith("11")]
-        - libcal 0.4.3.*
+        - libcal 0.*
         - libnvshmem3
       run:
         - {{ pin_compatible("cuda-version", max_pin="x") }}
