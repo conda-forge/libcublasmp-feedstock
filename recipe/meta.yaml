@@ -50,11 +50,13 @@ outputs:
         - cuda-version {{ cuda_compiler_version }}
         - libcublas    # [(cuda_compiler_version or "").startswith("12")]
         - cudatoolkit  # [(cuda_compiler_version or "").startswith("11")]
+        - nccl
         - libnvshmem3
       run:
         - {{ pin_compatible("cuda-version", max_pin="x") }}
         - libcublas    # [(cuda_compiler_version or "").startswith("12")]
         - cudatoolkit  # [(cuda_compiler_version or "").startswith("11")]
+        - nccl
         - libnvshmem3
       run_constrained:
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
