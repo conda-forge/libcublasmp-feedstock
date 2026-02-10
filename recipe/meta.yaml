@@ -1,4 +1,4 @@
-{% set version = "0.7.0.125" %}
+{% set version = "0.8.0.2023" %}
 {% set lib_version = version.split(".")[0]+"."+version.split(".")[1]+"."+version.split(".")[2] %}
 {% set platform = "placeholder" %}  # [not (linux64 or aarch64)]
 {% set platform = "linux-x86_64" %}  # [linux64]
@@ -14,10 +14,10 @@ package:
 
 source:
   url: https://developer.download.nvidia.com/compute/cublasmp/redist/libcublasmp/{{ platform }}/libcublasmp-{{ platform }}-{{ version }}_cuda{{ cuda_major }}-archive.{{ extension }}
-  sha256: f0236c824227145a219614ea4276154e02d1c469ab2762fc9379c1b143be4b7b  # [linux64 and (cuda_compiler_version or "").startswith("12")]
-  sha256: b7ece283533915d550ab53b8af13b9d20fe1d6c0c21365f08964c4eaa5304539  # [linux64 and (cuda_compiler_version or "").startswith("13")]
-  sha256: edd081922e4529361c13b47a6028f0a60bb8b94f8959a13ad4919ed9b58afe96  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
-  sha256: 97b3176b864b930adf5b89d73d4b1e46509595019486dbc4d01cb25218d4abf8  # [aarch64 and (cuda_compiler_version or "").startswith("13")]
+  sha256: 679e70cca5f9a54e582522a828e78ff6dac6527ab608540ebf86f3e9fd532093  # [linux64 and (cuda_compiler_version or "").startswith("12")]
+  sha256: f29dd10fa0a7268b40e88c73be65d22890e125ec66cbe9e367d5f8ff7991031b  # [linux64 and (cuda_compiler_version or "").startswith("13")]
+  sha256: 7eb622a529d9ba792836ed819ddcf86261b4f0ff48d93f67d006ebe7b143cf8a  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
+  sha256: 8fecd957f41d4b10b5d85a1203950a8fe560dd8811d677f4130efb3e88d6210b  # [aarch64 and (cuda_compiler_version or "").startswith("13")]
 
 build:
   number: 0
@@ -54,12 +54,10 @@ outputs:
         - cuda-version {{ cuda_compiler_version }}
         - libcublas
         - nccl
-        - libnvshmem3
       run:
         - {{ pin_compatible("cuda-version", max_pin="x") }}
         - libcublas
         - nccl
-        - libnvshmem3
     test:
       commands:
         - test -L $PREFIX/lib/libcublasmp.so.0
