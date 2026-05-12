@@ -1,7 +1,7 @@
 About libcublasmp-feedstock
 ===========================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libcublasmp-feedstock-temp-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libcublasmp-feedstock/blob/main/LICENSE.txt)
 
 Home: https://docs.nvidia.com/cuda/cublasmp/
 
