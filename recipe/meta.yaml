@@ -37,9 +37,6 @@ outputs:
     build:
       ignore_run_exports:
         - cuda-version
-      run_exports:
-       # potentially breaking changes with every minor version until 1.0.0
-        - {{ pin_subpackage("libcublasmp", max_pin="x.x") }}
       missing_dso_whitelist:
         - "*libcuda.so*"
     files:
@@ -78,7 +75,8 @@ outputs:
       ignore_run_exports:
         - cuda-version
       run_exports:
-        - {{ pin_subpackage("libcublasmp", max_pin="x") }}
+       # potentially breaking changes with every minor version until 1.0.0
+        - {{ pin_subpackage("libcublasmp", max_pin="x.x") }}
     files:
       - lib/libcublasmp.so
       - include/cublasmp.h
